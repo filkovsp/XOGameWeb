@@ -86,6 +86,15 @@ wss.on("connection", function(ws) {
                 x = move.toString()[1] - 1;
                 y = move.toString()[0] - 1;
                 matrix[y][x] = sign;
+
+                nowTurn = (nowTurn == players[0].uid) ? players[1].uid : players[0].uid;
+            
+                var jsonstr = JSON.stringify ({
+                    "sender" : "server",
+                    "nowTurn" : nowTurn
+                });
+
+                wss.broadcast(jsonstr);
             }
 
 
