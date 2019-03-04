@@ -1,5 +1,6 @@
 // var sock = new WebSocket("ws://websockets.localhost:8001");
 var sock = new WebSocket("ws://192.168.1.90:8001");
+var nowTurn = null;
 
 sock.onopen = function (event) {
     console.log(event);				
@@ -19,6 +20,15 @@ sock.onmessage = function (event) {
             document.getElementById("playerId").value = response.playerId;
             document.getElementById("sign").value = response.sign;
             document.getElementById("color").value = response.color;
+        }
+
+        if (response.sender == "server" & !isNaN(response.nowTurn)) {
+            nowTurn = response.nowTurn;
+            
+            if (document.getElementById("playerId").value == nowTurn) {
+                document.getElementById("game").innerHTML = "It's your turn now";
+            }
+            
         }
 
 
@@ -42,10 +52,10 @@ sock.onmessage = function (event) {
 function playerClick(arg) {
     //document.querySelector("#playerName").
     var playerName = document.getElementById("playerName").value;
-    var playerId = document.getElementById("playerId").value
+    var playerId = document.getElementById("playerId").value;
 
     if(playerId !== "undefined" & playerId != '') {
-        if (sock.readyState == 1) {
+        if (sock.readyState == 1 & playerId == nowTurn) {
             // alert(sock.readyState);
             // sock.send(playerId + "|" + arg);
             var sign = document.getElementById("sign").value;
@@ -63,6 +73,9 @@ function playerClick(arg) {
             var xoCell = document.getElementById(arg);
             xoCell.setAttribute("style", "color:" + color + ";");
             xoCell.innerHTML = sign;
+            document.getElementById("game").innerHTML = "";
+        } else {
+            console.log("make sure you are connected and it's your turn now!");
         }
     } else {
         alert("Fill in your Name please!");
