@@ -1,0 +1,35 @@
+#matrix {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #cccccc;
+}
+
+#matrix td {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    vertical-align: center;
+    font: 50px Sans, consolas;
+}
+
+#matrix td:hover {
+    border: 1px solid black;
+
+}
+
+.label {
+    color: #555;
+    text-align: right;
+    width: auto;
+    float: left;
+    clear: both;
+    padding: 5px 15px 3px 10px;
+}
+
+input[type="text"] {
+    border: 1px solid #C0CAD5;
+    font-family: tahoma,verdana,arial,sans-serif,Lucida Sans;
+    font-size: 11px;
+    padding: 3px;
+}
