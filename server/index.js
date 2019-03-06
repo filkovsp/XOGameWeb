@@ -10,6 +10,17 @@ const wss = new WebSocket.Server({port : 8001});
 // var server = require('ws').Server;
 // var ss = new server({port : 8001});
 
+/*
+	ws-heartbeat:
+	https://www.npmjs.com/package/ws-heartbeat
+*/
+// const heartbeat = require('ws-heartbeat/server');
+// heartbeat.setWsHeartbeat(wss, (ws, data, flag) => {
+//     if (data === '{"kind":"ping"}') {
+//         ws.send('{"kind":"pong"}');
+//     }
+// }, 60000); // 60 seconds
+
 var players=[];
 
 const max_players = 2;
