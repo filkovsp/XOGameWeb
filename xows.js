@@ -1,6 +1,18 @@
 // var sock = new WebSocket("ws://websockets.localhost:8001");
-var sock = new WebSocket("ws://192.168.1.90:8001");
+
+// var sock = new WebSocket("ws://78.147.176.84:8001");
+var sock = new WebSocket("ws://" + location.host + ":8001");
 var nowTurn = null;
+
+/*
+	ws-heartbeat:
+	https://www.npmjs.com/package/ws-heartbeat
+*/
+// const heartbeat = require('ws-heartbeat/client');
+// heartbeat.setWsHeartbeat(ws, '{"kind":"ping"}', {
+//     pingTimeout: 60000, // 60 seconds
+//     pingInterval: 25000, // 25 seconds
+// });
 
 sock.onopen = function (event) {
     console.log(event);				
@@ -20,6 +32,8 @@ sock.onmessage = function (event) {
             document.getElementById("playerId").value = response.playerId;
             document.getElementById("sign").value = response.sign;
             document.getElementById("color").value = response.color;
+
+            document.getElementById("uid").innerHTML = response.playerId;
         }
 
         if (response.sender == "server" & !isNaN(response.nowTurn)) {
@@ -50,11 +64,12 @@ sock.onmessage = function (event) {
 };
 
 function playerClick(arg) {
-    //document.querySelector("#playerName").
-    var playerName = document.getElementById("playerName").value;
+    // document.querySelector("#playerName").
+    // var playerName = document.getElementById("playerName").value;
     var playerId = document.getElementById("playerId").value;
 
     if(playerId !== "undefined" & playerId != '') {
+
         if (sock.readyState == 1 & playerId == nowTurn) {
             // alert(sock.readyState);
             // sock.send(playerId + "|" + arg);
@@ -78,7 +93,7 @@ function playerClick(arg) {
             console.log("make sure you are connected and it's your turn now!");
         }
     } else {
-        alert("Fill in your Name please!");
+        console.log("you are not signed in!");
     }
 
     

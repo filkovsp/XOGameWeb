@@ -21,6 +21,7 @@
 .label {
     color: #555;
     text-align: right;
+    /* font-weight: bold; */
     width: auto;
     float: left;
     clear: both;
@@ -32,4 +33,23 @@ input[type="text"] {
     font-family: tahoma,verdana,arial,sans-serif,Lucida Sans;
     font-size: 11px;
     padding: 3px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #matrix {
+        margin: auto;
+        width: 90vmin;
+        height: 90vmin;
+        border: 1px solid #cccccc;
+    }
+
+    #matrix td {
+        width: 30vmin;
+        height: 30vmin;
+        border: 1px solid #cccccc;
+        text-align: center;
+        vertical-align: center;
+        font: 25vmin Sans, consolas;
+    }
 }

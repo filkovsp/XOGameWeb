@@ -2,21 +2,22 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-    <title>Websockets</title>
+    <title>XO Game</title>
 	<!-- <link rel="stylesheet" href="style.css" type="text/css" media="screen" /> -->
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 </head>
 	<body>
-		<div> 
-			<div class="label">Your name: </div>
-			<!-- <button id="btn">Send "Hello"</button> -->
-			<input type="text" name="playerName" value="" id="playerName" placeholder="Your name">
+		<div id="userid">
+			<div class="label">
+				Your UserID: <span id="uid"></span>
+			</div>
+			<!-- <input type="text" name="playerName" value="" id="playerName" placeholder="Your name"> -->
 			<input type="hidden" name="playerId" value="" id="playerId">
 			<input type="hidden" name="sign" value="" id="sign">
 			<input type="hidden" name="color" value="" id="color">
 		</div>
 		<br>
-		<div>
+		<div style="margin-top: 15px;">
 			<table id="matrix" cellspacing="0" cellpaddin="0"> 
 
 				<tr>
